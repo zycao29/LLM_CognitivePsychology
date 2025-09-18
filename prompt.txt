@@ -1,0 +1,636 @@
+################################################ GPT ################################################
+
+############################################ pure list 32 ###########################################
+
+try_prompt = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+
+###################################### mix list 37 (5 more times) #####################################
+########################################## position beginning #########################################
+try_prompt_gpt_mix37_fan1_begin = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+###################################### mix list 37 (5 more times) #####################################
+########################################### position middle ###########################################
+try_prompt_gpt_mix37_middle = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+###################################### mix list 37 (5 more times) #####################################
+############################################# position end ############################################
+try_prompt_gpt_mix37_end = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+###################################### mix list 42 (10 more times) #####################################
+########################################## position beginning #########################################
+try_prompt_gpt_mix42_begin = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.",
+    "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.",
+    "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+###################################### mix list 37 (5 more times) #####################################
+########################################## position beginning #########################################
+try_prompt_gpt_mix37_fan2_begin = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The maid is in the library.","The maid is in the library.","The maid is in the library.",
+    "The maid is in the library.","The maid is in the library.","The maid is in the library.",
+    "The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+
+
+
+
+########################################### 32 + 8 + 8 = 48 ###########################################
+try_prompt = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 80 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+ 
+Input: The study list and question list. Study list is [
+    "The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The firefighter is in the market.", "The journalist is in the bookstore.", "The lawer is in the aquarium.",
+    "The librarian is in the pharmacy.", "The nurse is in the restaurant.", "The photographer is in the station.",
+    "The plumber is in the zoo.","The writer is in the bakery.",
+    "The accountant is in the beach.","The accountant is in the cinema.","The artist is in the beach.", 
+    "The artist is in the cinema.", "The archtist is in the hospital.", "The archtist is in the mall.",
+    "The dentist is in the hospital.", "The dentist is in the mall.",
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is ["Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the gardener in the hallway?", "Is the coach in the bank?", "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the chef in the attic?", "Is the firefighter in the market?", "Is the journalist in the bookstore?",
+    "Is the lawer in the aquarium?","Is the librarian in the pharmacy?","Is the nurse in the restaurant?",
+    "Is the photographer in the station?", "Is the plumber in the zoo?","Is the writer in the bakery?",
+    "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the accountant in the beach?",
+    "Is the archtist in the hospital?","Is the accountant in the cinema?", "Is the archtist in the mall?",
+    "Is the artist in the cinema?","Is the dentist in the hospital?","Is the artist in the beach?",
+    "Is the dentist in the mall?",
+    "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the firefighter in the bakery?", "Is the journalist in the market?",
+    "Is the lawer in the bookstore?","Is the librarian in the aquarium?","Is the nurse in the pharmacy?",
+    "Is the photographer in the restaurant?", "Is the plumber in the station?","Is the writer in the zoo?",
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?",  "Is the accountant in the hospital?",
+    "Is the archtist in the beach?","Is the accountant in the mall?", "Is the archtist in the cinema?",
+    "Is the artist in the hospital?","Is the dentist in the beach?","Is the artist in the mall?",
+    "Is the dentist in the cinema?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+############################################ pure list 32 ###########################################
+
+try_prompt_DRM_5_fan1 = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+    "The actor is in the hangar.", "The farmer is in the carport.", "The pirate is in the cubicle.", 
+    "The chef is in the loft.", "The gardener is in the foyer.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the nightclub.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the chef in the attic?","Is the gardener in the hallway?", "Is the coach in the bank?", 
+    "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+############################################ pure list 32 ###########################################
+
+try_prompt_DRM_5_fan2 = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+   "The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", 
+    "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
+    "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", 
+    "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", 
+    "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", 
+    "The detective is in the church.", 
+    "The maid is in the library.", "The maid is in the studio.", 
+    "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", 
+    "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", 
+    "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", 
+    "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", 
+    "The tourist is in the disco.", "The tourist is in the theater."]. 
+    
+    Question list is [
+    "Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", 
+    "Is the chef in the attic?","Is the gardener in the hallway?", "Is the coach in the bank?", 
+    "Is the inventor in the kitchen?", 
+    "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the hippie in the hotel?", 
+    "Is the scientist in the prison?", "Is the soldier in the stadium?", "Is the detective in the church?", 
+    "Is the cowboy in the barn?", "Is the queen in the park?", "Is the sheriff in the school?", 
+    "Is the maid in the library?", "Is the spy in the clinic?", 
+    "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", 
+    "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", 
+    "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", 
+    "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", 
+    "Is the pilot in the temple?", "Is the tourist in the nightclub?", 
+    "Is the actor in the prison?", 
+    "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", 
+    "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", 
+    "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", 
+    "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", 
+    "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+    "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", 
+    "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", 
+    "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", 
+    "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", 
+    "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", 
+    "Is the tourist in the factory?"].
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+####################################################################################################
+
+
+
+
+try_prompt_gpt_mix37_25percent_5times = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+"The farmer is in the garage.", "The pirate is in the office.", "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.", "The actor is in the airport.", "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", "The detective is in the church."
+"The maid is in the library.", "The maid is in the studio.", "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", "The tourist is in the nightclub.", "The tourist is in the theater."
+].
+    
+
+Question list is [
+"Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", "Is the chef in the attic?", "Is the gardener in the hallway?", "Is the queen in the park?", "Is the coach in the bank?", "Is the hippie in the hotel?",    "Is the scientist in the prison?", "Is the cowboy in the barn?", "Is the inventor in the kitchen?", "Is the sheriff in the school?", "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the soldier in the stadium?", "Is the detective in the church?", "Is the actor in the prison?", "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?",
+"Is the maid in the library?", "Is the spy in the clinic?", "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", "Is the tourist in the factory?",
+].
+
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+
+
+####################################################################################################
+try_prompt_32_shuffle = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+'The detective is in the church.', 'The pilot is in the factory.', 'The actor is in the airport.', 'The teacher is in the library.', 'The musician is in the nightclub.', 'The spy is in the museum.', 'The engineer is in the clinic.', 'The gardener is in the hallway.', 'The doctor is in the temple.', 'The tourist is in the nightclub.', 'The queen is in the park.', 'The inventor is in the kitchen.', 'The hippie is in the hotel.', 'The maid is in the studio.', 'The dancer is in the castle.', 'The cowboy is in the barn.', 'The spy is in the clinic.', 'The pilot is in the temple.', 'The musician is in the theater.', 'The chef is in the attic.', 'The judge is in the laboratory.', 'The coach is in the bank.', 'The teacher is in the studio.', 'The maid is in the library.', 'The pirate is in the office.', 'The soldier is in the stadium.', 'The engineer is in the museum.', 'The scientist is in the prison.', 'The sheriff is in the school.', 'The doctor is in the factory.', 'The tourist is in the theater.', 'The farmer is in the garage.'
+]. 
+    
+
+Question list is [
+"Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", "Is the chef in the attic?", "Is the gardener in the hallway?", "Is the queen in the park?", "Is the coach in the bank?", "Is the hippie in the hotel?",    "Is the scientist in the prison?", "Is the cowboy in the barn?", "Is the inventor in the kitchen?", "Is the sheriff in the school?", "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the soldier in the stadium?", "Is the detective in the church?", "Is the actor in the prison?", "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+"Is the maid in the library?", "Is the spy in the clinic?", "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", "Is the tourist in the factory?"
+].
+
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+'The detective is in the church.', 'The pilot is in the factory.', 'The actor is in the airport.', 'The teacher is in the library.', 'The musician is in the nightclub.', 'The spy is in the museum.', 'The engineer is in the clinic.', 'The gardener is in the hallway.', 'The doctor is in the temple.', 'The tourist is in the nightclub.', 'The queen is in the park.', 'The inventor is in the kitchen.', 'The hippie is in the hotel.', 'The maid is in the studio.', 'The dancer is in the castle.', 'The cowboy is in the barn.', 'The spy is in the clinic.', 'The pilot is in the temple.', 'The musician is in the theater.', 'The chef is in the attic.', 'The judge is in the laboratory.', 'The coach is in the bank.', 'The teacher is in the studio.', 'The maid is in the library.', 'The pirate is in the office.', 'The soldier is in the stadium.', 'The engineer is in the museum.', 'The scientist is in the prison.', 'The sheriff is in the school.', 'The doctor is in the factory.', 'The tourist is in the theater.', 'The farmer is in the garage.'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try_prompt_32 = """
+Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
+
+Input: The study list and question list. Study list is [  
+"The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", "The coach is in the bank.", "The hippie is in the hotel.", "The scientist is in the prison.", "The cowboy is in the barn.", "The inventor is in the kitchen.", "The sheriff is in the school.", "The dancer is in the castle.", "The judge is in the laboratory.", "The soldier is in the stadium.", "The detective is in the church.", 
+"The maid is in the library.", "The maid is in the studio.", "The spy is in the clinic.", "The spy is in the museum.", "The doctor is in the temple.", "The doctor is in the factory.", "The musician is in the nightclub.", "The musician is in the theater.", "The teacher is in the library.", "The teacher is in the studio.", "The engineer is in the clinic.", "The engineer is in the museum.", "The pilot is in the temple.", "The pilot is in the factory.", "The tourist is in the nightclub.", "The tourist is in the theater."
+]. 
+    
+
+Question list is [
+"Is the actor in the airport?", "Is the farmer in the garage?", "Is the pirate in the office?", "Is the chef in the attic?", "Is the gardener in the hallway?", "Is the queen in the park?", "Is the coach in the bank?", "Is the hippie in the hotel?",    "Is the scientist in the prison?", "Is the cowboy in the barn?", "Is the inventor in the kitchen?", "Is the sheriff in the school?", "Is the dancer in the castle?", "Is the judge in the laboratory?", "Is the soldier in the stadium?", "Is the detective in the church?", "Is the actor in the prison?", "Is the farmer in the attic?", "Is the pirate in the garage?", "Is the gardener in the school?", "Is the coach in the hallway?", "Is the inventor in the stadium?", "Is the dancer in the church?", "Is the judge in the kitchen?", "Is the hippie in the castle?", "Is the scientist in the barn?", "Is the soldier in the hotel?", "Is the detective in the airport?", "Is the cowboy in the laboratory?", "Is the queen in the bank?", "Is the sheriff in the office?", "Is the chef in the park?", 
+"Is the maid in the library?", "Is the spy in the clinic?", "Is the doctor in the temple?", "Is the musician in the nightclub?", "Is the teacher in the studio?", "Is the engineer in the museum?", "Is the pilot in the factory?", "Is the tourist in the theater?", "Is the maid in the studio?", "Is the spy in the museum?", "Is the doctor in the factory?", "Is the musician in the theater?", "Is the teacher in the library?", "Is the engineer in the clinic?", "Is the pilot in the temple?", "Is the tourist in the nightclub?", "Is the maid in the nightclub?", "Is the spy in the library?", "Is the doctor in the clinic?", "Is the musician in the factory?", "Is the teacher in the theater?", "Is the engineer in the studio?", "Is the pilot in the museum?", "Is the tourist in the temple?", "Is the maid in the theater?", "Is the spy in the studio?", "Is the doctor in the museum?", "Is the musician in the temple?", "Is the teacher in the nightclub?", "Is the engineer in the library?", "Is the pilot in the clinic?", "Is the tourist in the factory?"
+].
+
+
+Output: The results of the analysis need to be in CSV (comma-separated values). 
+Present the results inside a code box.  
+The code box should be labeled answers_csv 
+Each line of the output should contain the order of each question from the question list and the corresponding answer.
+
+Analysis: 
+Here is a template describing how to answer the questions list
+- 1: Yes
+- 2: No 
+"""
+
+
+
+apples
+
+
+number of edits ( adding,  deleting   substition) transform from t1 to t2
