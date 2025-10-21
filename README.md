@@ -20,4 +20,4 @@ For the online LLM, please replace the API key with your own.
 
 If you use this work, please cite:
 
-Author(s). (Year). Title of the Paper. Journal Name, Volume(Issue), Page numbers. DOI: [DOI link]
+Cao, Z., Schooler, L., & Zafarani, R. (2025). Analyzing Memory Effects in Large Language Models through the lens of Cognitive Psychology. arXiv preprint arXiv:2509.17138.
