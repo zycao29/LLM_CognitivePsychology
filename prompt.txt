@@ -4,7 +4,7 @@
 
 try_prompt = """
 Goal: Memorizing the study list, where all sentences are in the format of "The person is in the location", answer all 64 questions in the questions list (questions are in the form of "Is the person in the location?") based on the study list. If the person-location pair is found in the study list, answer "yes"; otherwise, answer "no."
-
+ 
 Input: The study list and question list. Study list is [  
     "The actor is in the airport.", "The farmer is in the garage.", "The pirate is in the office.", 
     "The chef is in the attic.", "The gardener is in the hallway.", "The queen is in the park.", 
